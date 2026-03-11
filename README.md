@@ -12,10 +12,24 @@
 
   <p>
     <a href="#-features">Features</a> •
+    <a href="#-preview">Preview</a> •
     <a href="#-why-klip">Why Klip?</a> •
-    <a href="#-installation">Installation</a> •
-    <a href="#-branding">Branding</a>
+    <a href="#-installation">Installation</a>
   </p>
+</div>
+
+---
+
+## 📸 Preview
+
+<div align="center">
+  <p><b>✨ Main Interface - Puffy Minimalism ✨</b></p>
+  <img src="assets/screenshots/main-ui.png" width="85%" alt="Klip Main UI" style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+  
+  <br/><br/>
+
+  <p><b>灵动交互 (Interaction & Details)</b></p>
+  <img src="assets/screenshots/tray.png" width="85%" alt="Tray View" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
 </div>
 
 ---
