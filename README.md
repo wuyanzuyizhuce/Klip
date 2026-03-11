@@ -1,53 +1,88 @@
-# Klip 📎
+<div align="center">
+  <img src="resources/logo.svg" width="160" height="160" alt="Klip Logo">
+  <h1>Klip</h1>
+  <p><strong>A Puffy, Minimalist, and 3D Clay-Styled Clipboard Companion.</strong></p>
+  
+  <p>
+    <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-blue?style=flat-square" alt="Platform">
+    <img src="https://img.shields.io/badge/Style-3D%20Claymorphism-FF99C8?style=flat-square" alt="Style">
+    <img src="https://img.shields.io/badge/Built%20with-Electron%20%2B%20React-61DAFB?style=flat-square" alt="Tech">
+    <img src="https://img.shields.io/github/license/wuyanzuyizhuce/Klip?style=flat-square" alt="License">
+  </p>
 
-> **极致极简、灵动 Q 萌的 3D 粘土风剪贴板助手。**
+  <p>
+    <a href="#-features">Features</a> •
+    <a href="#-why-klip">Why Klip?</a> •
+    <a href="#-installation">Installation</a> •
+    <a href="#-branding">Branding</a>
+  </p>
+</div>
 
-Klip 不仅仅是一个工具，它是你数字化办公环境中的“小怪兽”伙伴。它以 **3D 粘土风格 (Claymorphism)** 为核心设计语言，旨在打破生产力工具的冰冷感，带来温暖且丝滑的操作体验。
+---
 
-![Klip Logo](resources/logo.svg)
+### 🍪 每一刻，都在 Klip 中被温柔记住
 
-## ✨ 核心特性
+Klip 是一款拒绝平庸的剪贴板管理工具。我们深知生产力工具不应只有冰冷的线条和灰暗的界面。Klip 采用了 **3D 粘土风格 (Claymorphism)**，将“剪辑”的动作具象化为一个软萌的 K 萌精灵。
 
-- **🚀 瞬时响应**：全原生级的性能表现，记录每一次复制，无论是文本、图片还是文件。
-- **🍦 治愈视觉**：
-  - **3D 粘土精灵**：主图标为一个软糯可爱的“K 萌小怪兽”。
-  - **灵动托盘**：专为 macOS 优化，带有一对“会说话”的眼睛。
-- **📁 智能整理**：自动识别剪贴板类型，支持快速收藏与分类。
-- **⌨️ 效率专家**：全键盘支持，通过自定义快捷键瞬间唤起（默认 `Cmd/Ctrl + Shift + V`）。
-- **🔒 安全第一**：内容存储在本地，保护你的隐私。
+> “在 Klip 之前，剪贴板只是一个缓存。在 Klip 之后，它成为了你灵感流转的驿站。”
 
-## 🛠️ 工程化指南
+---
 
-### 环境准备
-- Node.js (v18+)
-- 包管理器: `pnpm` (推荐) 或 `npm`
+## ✨ Features
 
-### 开发与打包
+- **🌈 视觉治愈**: 全局 3D 拟态设计，每一次呼出都是一次视觉享受。
+- **🚀 极速唤起**: 毫秒级的全局唤起响应，Cmd/Ctrl + Shift + V 即刻降临。
+- **📸 灵动托盘**: 专为 macOS 优化，拥有一对灵动的瞳孔，在菜单栏中静候你的召唤。
+- **📁 全能兼容**: 智能识别并自动分类文本、代码块、高清图像以及各类文件。
+- **🗃️ 收藏空间**: 将反复调用的片段一键归类，打造你的个人素材库。
+- **🔒 隐私至上**: 离线存储，不上传任何内容，你的所有灵感仅存于你的设备。
+
+---
+
+## 🤔 Why Klip?
+
+| 传统工具 | Klip |
+| :--- | :--- |
+| 冰冷、生硬的列表 | 软萌、灵动的 3D 界面 |
+| 干扰你的桌面空间 | 纯净托盘模式，用完即隐 |
+| 枯燥的文字记录 | 赋予记录“生命感”与“情绪价值” |
+
+---
+
+## 🚀 Installation
+
+### Download Release
+[点击下载最新的 Klip.dmg (macOS)](https://github.com/wuyanzuyizhuce/Klip/releases) (🚧 敬请期待)
+
+### For Developers
 ```bash
-# 安装依赖
+# Clone the repository
+git clone https://github.com/wuyanzuyizhuce/Klip.git
+
+# Install dependencies
 npm install
 
-# 启动开发服务器
+# Run in Development
 npm run dev
 
-# 🚀 一键打包 (自动生成 DMG)
+# One-Click Build (Automated DMG Generation)
 npm run build:all
 ```
 
-## 📦 打包体系说明
+---
 
-为了确保在不同环境下都能顺利生成安装包，项目采用了 **混合打包方案**：
+## 🎨 Branding & Identity
 
-1. **构建引擎**：使用 `electron-builder` 进行代码编译、混淆与 `.app` 文件夹生成。
-2. **镜像引擎**：集成 `electron-installer-dmg`，通过调用 macOS 原生 `hdiutil` 绕过网络下载限制，生成最终的 DMG 安装镜像。
-3. **环境隔离**：打包脚本自动集成淘宝镜像源 (npmmirror) 与 Ad-hoc 签名逻辑。
+Klip 的品牌核心是 **“陪伴与简洁”**。
 
-## 🎨 视觉资产说明
+- **K-Monster**: 主图标是一个 3D 粘土小精灵。它的身体是由柔软的 K 字母变形而来，象征着它正紧紧抱着你的每一个创意片段。
+- **Interaction**: 
+  - **左键**: 呼出灵动面板。
+  - **右键**: 快速设置与退出。
 
-- `resources/logo.svg`：主图标，采用了极简流体与 3D 粘土质感的融合。
-- `resources/tray.svg`：菜单栏图标，专为高 DPI 屏幕优化，支持 macOS 自动反色。
-- `resources/icon.png`：512x512 高清渲染图，用于打包展示。
+---
 
-## 📄 许可证
-
-本项目基于 MIT 协议开源。
+<div align="center">
+  <p>MIT License © 2024 Klip Team</p>
+  <p>Designed with ❤️ for creative souls.</p>
+</div>
