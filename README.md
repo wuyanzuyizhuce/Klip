@@ -51,8 +51,10 @@ Klip 是一款拒绝平庸的剪贴板管理工具。我们深知生产力工具
 
 ## 🚀 Installation
 
-### Download Release
-[点击下载最新的 Klip.dmg (macOS)](https://github.com/wuyanzuyizhuce/Klip/releases) (🚧 敬请期待)
+### Download Latest Version
+[![Download Klip](https://img.shields.io/badge/Download-Klip.dmg-FF99C8?style=for-the-badge&logo=apple)](https://github.com/wuyanzuyizhuce/Klip/releases/latest)
+
+> 目前支持 macOS (Apple Silicon & Intel)。Windows 版本正在通过 GitHub Action 自动构建中。
 
 ### For Developers
 ```bash
