@@ -26,7 +26,10 @@ function createWindow(): void {
       backgroundThrottling: false
     }
   })
-  mainWindow.on('ready-to-show', () => { if (!process.argv.includes('--hidden')) mainWindow?.show() })
+  
+  // 启动时不再自动显示窗口，仅在托盘点击或快捷键时显示
+  mainWindow.on('ready-to-show', () => { })
+  
   mainWindow.on('blur', () => mainWindow?.hide())
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
   else mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
@@ -38,37 +41,29 @@ function toggleWindow(): void {
 }
 
 function getResourcePath(relPath: string): string {
-  // 无论开发还是生产环境，resources 文件夹都在 appPath 下
   return join(app.getAppPath(), relPath)
 }
 
 function createTray(): void {
-  // 优先加载 PNG，因为 nativeImage 对 PNG 的支持在所有平台和环境下最稳健
   const trayPath = getResourcePath('resources/tray.png')
   let trayIcon = nativeImage.createFromPath(trayPath)
   
-  // 如果 PNG 找不到或为空，再尝试 SVG
   if (trayIcon.isEmpty()) {
     const svgPath = getResourcePath('resources/tray.svg')
     trayIcon = nativeImage.createFromPath(svgPath)
   }
 
-  // 如果依然失败，回退到主图标
   if (trayIcon.isEmpty()) {
     const iconPath = getResourcePath('resources/icon.png')
     trayIcon = nativeImage.createFromPath(iconPath)
   }
 
   if (trayIcon.isEmpty()) {
-    console.error('Tray icon failed to load from all sources.')
     trayIcon = nativeImage.createEmpty()
   }
 
-  // macOS 专属处理
   if (process.platform === 'darwin') {
-    // 调整为标准的 22x22 尺寸
     const resizedIcon = trayIcon.resize({ width: 22, height: 22 })
-    // 关键：必须在最终设置给 Tray 的图像上设置 TemplateImage
     resizedIcon.setTemplateImage(true)
     tray = new Tray(resizedIcon)
   } else {
@@ -82,7 +77,7 @@ function createTray(): void {
     { type: 'separator' },
     { label: '退出', click: () => app.quit() }
   ])
-  tray.setToolTip('极简剪贴板')
+  tray.setToolTip('Klip - 极简剪贴板')
   tray.setContextMenu(contextMenu)
   tray.on('click', () => toggleWindow())
 }
@@ -177,13 +172,15 @@ async function checkClipboard(): Promise<void> {
   } catch (err) { console.error('Clipboard check error:', err) }
 }
 
-function simulatePaste() {
+function simulatePaste(): void {
   if (process.platform === 'darwin') setTimeout(() => { exec(`osascript -e 'tell application "System Events" to keystroke "v" using command down'`) }, 100)
   else if (process.platform === 'win32') setTimeout(() => { exec(`powershell -command "(New-Object -ComObject WScript.Shell).SendKeys('^v')"`) }, 100)
 }
 
 app.whenReady().then(() => {
+  // macOS 专属：隐藏 Dock 图标，实现纯净托盘模式
   if (process.platform === 'darwin') {
+    app.dock?.hide()
     const template = [
       { label: app.name, submenu: [{ label: '关于 KLIP', role: 'about' }, { type: 'separator' }, { label: '退出', accelerator: 'Command+Q', click: () => app.quit() }] },
       { label: '编辑', submenu: [{ label: '撤销', role: 'undo' }, { label: '重做', role: 'redo' }, { type: 'separator' }, { label: '剪切', role: 'cut' }, { label: '复制', role: 'copy' }, { label: '粘贴', role: 'paste' }] }
@@ -191,7 +188,7 @@ app.whenReady().then(() => {
     Menu.setApplicationMenu(Menu.buildFromTemplate(template as any))
   } else Menu.setApplicationMenu(null)
 
-  electronApp.setAppUserModelId('com.electron')
+  electronApp.setAppUserModelId('com.sirzhong.klip')
   createTray()
   globalShortcut.register('CommandOrControl+Shift+V', () => toggleWindow())
 
