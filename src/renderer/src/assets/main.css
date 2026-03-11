@@ -70,6 +70,13 @@ button, [role="button"], a {
 
 .custom-scrollbar {
   scrollbar-gutter: stable;
+  /* 确保在 Webkit 浏览器中即使没有滚动内容也保留占位 */
+  overflow-y: scroll;
+}
+
+/* 当确实不需要滚动时，可以改为更加智能的 stable */
+.stable-layout {
+  scrollbar-gutter: stable;
 }
 
 .hide-scrollbar::-webkit-scrollbar {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
-import { Search, Clipboard, BarChart3, Trash2, Command, Pin, Image as ImageIcon, Link2, Globe, Code2, ExternalLink, Search as SearchIcon, Copy, Trash, CheckSquare, Layers, Maximize2, X, Zap, Plus, FolderHeart, Folder, ChevronRight, Keyboard } from 'lucide-react'
+import { Search, Clipboard, BarChart3, Trash2, Command, Pin, Image as ImageIcon, Link2, Globe, Code2, ExternalLink, Search as SearchIcon, Copy, Trash, CheckSquare, Layers, Maximize2, X, Zap, Plus, FolderHeart, Folder, ChevronRight } from 'lucide-react'
 import { useClipboardStore, CategoryTab } from './store/useClipboardStore'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -180,7 +180,6 @@ function App() {
     if (!newCollectionName.trim()) return
     const newCols = [...collections, { id: Date.now().toString(), name: newCollectionName.trim() }]
     setCollections(newCols); window.api.saveCollections(newCols); setNewCollectionName(''); setIsAddingCollection(false)
-    playPopSound()
   }
 
   const deleteCollection = (id: string) => {
@@ -241,7 +240,7 @@ function App() {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => { setActiveTab(tab.id); playPopSound() }}
+              onClick={() => { setActiveTab(tab.id) }}
               className={`text-xs pb-3 transition-colors relative z-10 flex-shrink-0 flex items-center gap-2 outline-none ${activeTab === tab.id && !activeCollectionId ? 'text-blue-400 font-medium' : 'text-stone-400 hover:text-stone-200'}`}
             >
               <tab.icon className="w-3.5 h-3.5" />
@@ -291,7 +290,7 @@ function App() {
               {collections.map((col) => (
                 <div key={col.id} className="group relative">
                   <button
-                    onClick={() => { setActiveCollectionId(col.id); playPopSound() }}
+                    onClick={() => { setActiveCollectionId(col.id) }}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-all ${activeCollectionId === col.id ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800'}`}
                   >
                     <FolderHeart
@@ -356,7 +355,7 @@ function App() {
                         if (el) itemRefs.current.set(item.id, el)
                         else itemRefs.current.delete(item.id)
                       }}
-                      onClick={() => { setSelectedIndex(index); playPopSound() }}
+                      onClick={() => { setSelectedIndex(index) }}
                       onDoubleClick={() => handleAction('paste')}
                       className={`group flex items-start gap-4 p-3.5 rounded-2xl cursor-pointer transition-all duration-150 relative overflow-hidden outline-none ${isSelected ? 'bg-blue-600/15 ring-1 ring-blue-500/30 shadow-lg' : 'hover:bg-stone-800/60 border border-transparent hover:border-white/5'} ${isChecked ? 'bg-blue-900/20' : ''}`}
                     >
@@ -440,7 +439,6 @@ function App() {
                           onClick={(e) => {
                             e.stopPropagation()
                             window.api.togglePin(item.id)
-                            playPopSound()
                           }}
                           className={`p-2 rounded-lg transition-all outline-none ${item.isPinned ? 'text-yellow-500 bg-yellow-500/10' : 'text-stone-500 opacity-0 group-hover:opacity-100 hover:bg-stone-700'}`}
                         >
@@ -513,7 +511,7 @@ function App() {
                         </p>
                       </div>
                       <button
-                        onClick={() => { window.api.openExternal(currentItem.content.trim()); playPopSound() }}
+                        onClick={() => { window.api.openExternal(currentItem.content.trim()) }}
                         className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl text-xs font-bold transition-all shadow-lg active:scale-[0.98]"
                       >
                         立即访问
@@ -542,7 +540,7 @@ function App() {
                         </p>
                       </div>
                       <button
-                        onClick={() => { window.api.showInFolder(currentItem.content); playPopSound() }}
+                        onClick={() => { window.api.showInFolder(currentItem.content) }}
                         className="w-full bg-stone-700 hover:bg-stone-600 text-white py-3 rounded-xl text-xs font-bold transition-all shadow-lg flex items-center justify-center gap-2 border border-white/5 tracking-wider active:scale-[0.98]"
                       >
                         <Folder className="w-4 h-4 text-blue-400" /> 在访达中显示
@@ -586,13 +584,13 @@ function App() {
                     </div>
                     <div className="grid grid-cols-2 gap-2 mt-4">
                       <button
-                        onClick={() => { window.api.searchBaidu(currentItem.content.trim()); playPopSound() }}
+                        onClick={() => { window.api.searchBaidu(currentItem.content.trim()) }}
                         className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-[10px] font-bold text-stone-300 transition-all shadow-sm active:scale-[0.98]"
                       >
                         <SearchIcon className="w-3.5 h-3.5" /> 百度搜索
                       </button>
                       <button
-                        onClick={() => { window.api.searchGoogle(currentItem.content.trim()); playPopSound() }}
+                        onClick={() => { window.api.searchGoogle(currentItem.content.trim()) }}
                         className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-[10px] font-bold text-stone-300 transition-all shadow-sm active:scale-[0.98]"
                       >
                         <Globe className="w-3.5 h-3.5" /> Google 搜索
