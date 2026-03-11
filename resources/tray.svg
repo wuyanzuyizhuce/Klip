@@ -1,0 +1,21 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded Silhouette of the K-Monster -->
+  <g fill="black">
+    <!-- Chunkier Body -->
+    <rect x="55" y="35" width="55" height="186" rx="27.5"/>
+    
+    <!-- Rounder Top Ear -->
+    <path d="M100 115C100 115 110 105 160 55C175 40 195 40 210 55C225 70 225 90 210 105L145 170L100 115Z"/>
+    
+    <!-- Rounder Bottom Ear -->
+    <path d="M100 141C100 141 110 151 160 201C175 216 195 216 210 201C225 186 225 166 210 151L145 86L100 141Z"/>
+  </g>
+
+  <!-- White Eyeballs (Large for visibility) -->
+  <circle cx="75" cy="115" r="14" fill="white"/>
+  <circle cx="95" cy="115" r="14" fill="white"/>
+
+  <!-- Black Pupils (The finishing touch!) -->
+  <circle cx="78" cy="115" r="6" fill="black"/>
+  <circle cx="98" cy="115" r="6" fill="black"/>
+</svg>
