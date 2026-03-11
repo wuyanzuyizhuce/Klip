@@ -66,9 +66,18 @@ Klip 是一款拒绝平庸的剪贴板管理工具。我们深知生产力工具
 ## 🚀 Installation
 
 ### Download Latest Version
-[![Download Klip](https://img.shields.io/badge/Download-Klip.dmg-FF99C8?style=for-the-badge&logo=apple)](https://github.com/wuyanzuyizhuce/Klip/releases/latest)
+<p>
+  <a href="https://github.com/wuyanzuyizhuce/Klip/releases/latest">
+    <img src="https://img.shields.io/badge/Download-Klip.dmg-FF99C8?style=for-the-badge&logo=apple" alt="Download macOS">
+  </a>
+  <a href="https://github.com/wuyanzuyizhuce/Klip/releases/latest">
+    <img src="https://img.shields.io/badge/Download-Klip--Setup.exe-61DAFB?style=for-the-badge&logo=windows" alt="Download Windows">
+  </a>
+</p>
 
-> 目前支持 macOS (Apple Silicon & Intel)。Windows 版本正在通过 GitHub Action 自动构建中。
+> **Platform Support**: 
+> - **macOS**: Apple Silicon & Intel (11.0+)
+> - **Windows**: Windows 10/11 (x64)
 
 ### For Developers
 ```bash
@@ -81,7 +90,7 @@ npm install
 # Run in Development
 npm run dev
 
-# One-Click Build (Automated DMG Generation)
+# One-Click Build (Generates DMG & EXE)
 npm run build:all
 ```
 
@@ -99,6 +108,6 @@ Klip 的品牌核心是 **“陪伴与简洁”**。
 ---
 
 <div align="center">
-  <p>MIT License © 2024 Klip Team</p>
+  <p>MIT License © 2026 Klip Team</p>
   <p>Designed with ❤️ for creative souls.</p>
 </div>
