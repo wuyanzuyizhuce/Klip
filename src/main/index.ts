@@ -77,9 +77,16 @@ function createTray(): void {
     { type: 'separator' },
     { label: '退出', click: () => app.quit() }
   ])
+
   tray.setToolTip('Klip - 极简剪贴板')
-  tray.setContextMenu(contextMenu)
+  
+  // 左键点击：切换窗口显示/隐藏
   tray.on('click', () => toggleWindow())
+  
+  // 右键点击：弹出功能菜单
+  tray.on('right-click', () => {
+    tray?.popUpContextMenu(contextMenu)
+  })
 }
 
 function getActiveApp(): string {
