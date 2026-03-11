@@ -12,8 +12,11 @@
     /* Enforce Inter font and clean dark mode base */
     @apply bg-transparent overflow-hidden select-none text-[#FAFAF9] font-sans antialiased;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    -webkit-app-region: drag;
   }
+}
+
+.drag {
+  -webkit-app-region: drag;
 }
 
 .no-drag {

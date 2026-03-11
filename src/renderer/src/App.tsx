@@ -188,9 +188,9 @@ function App() {
   ]
 
   return (
-    <div className="h-screen w-screen flex flex-col rounded-2xl overflow-hidden font-sans bg-stone-900/95 relative text-stone-50 border border-white/5 shadow-2xl">
-      <div className="bg-stone-900/40 border-b border-white/5 no-drag flex-shrink-0 pt-4 px-4 pb-0">
-        <div className="flex items-center bg-stone-800/50 rounded-xl px-4 py-3 shadow-inner border border-white/[0.03] focus-within:border-blue-500/50 transition-all duration-200">
+    <div className="h-screen w-screen flex flex-col rounded-2xl overflow-hidden font-sans bg-stone-900/95 relative text-stone-50 border border-white/5 shadow-2xl drag">
+      <div className="bg-stone-900/40 border-b border-white/5 flex-shrink-0 pt-4 px-4 pb-0">
+        <div className="flex items-center bg-stone-800/50 rounded-xl px-4 py-3 shadow-inner border border-white/[0.03] focus-within:border-blue-500/50 transition-all duration-200 no-drag">
           <Search className="w-5 h-5 text-stone-400 mr-3 flex-shrink-0" />
           <input
             ref={inputRef}
@@ -212,7 +212,7 @@ function App() {
             </kbd>
           </div>
         </div>
-        <div className="flex px-2 pt-4 gap-6 relative no-drag hide-scrollbar overflow-x-auto">
+        <div className="flex px-2 pt-4 gap-6 relative hide-scrollbar overflow-x-auto no-drag">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -238,8 +238,8 @@ function App() {
       </div>
 
       <div className="flex-1 flex overflow-hidden min-h-0 relative bg-stone-900/60">
-        <div className="w-48 border-r border-white/5 bg-stone-900/40 p-4 flex flex-col gap-6 no-drag flex-shrink-0 overflow-hidden">
-          <div className="flex-1 overflow-y-auto hide-scrollbar">
+        <div className="w-48 border-r border-white/5 bg-stone-900/40 p-4 flex flex-col gap-6 flex-shrink-0 overflow-hidden drag">
+          <div className="flex-1 overflow-y-auto hide-scrollbar no-drag">
             <div className="flex items-center justify-between text-stone-500 mb-4 px-1 font-bold uppercase tracking-widest text-[10px]">
               收藏夹{' '}
               <button
@@ -284,7 +284,7 @@ function App() {
               ))}
             </div>
           </div>
-          <div className="pt-4 border-t border-white/5 flex-shrink-0">
+          <div className="pt-4 border-t border-white/5 flex-shrink-0 no-drag">
             <div className="bg-stone-800/50 rounded-xl p-4 border border-white/[0.02] shadow-sm">
               <div className="flex items-center gap-2 text-stone-400 mb-1">
                 <BarChart3 className="w-3.5 h-3.5" />
@@ -432,9 +432,9 @@ function App() {
           </motion.div>
         </div>
 
-        <div className="w-80 border-l border-white/5 bg-stone-900/80 flex-shrink-0 relative h-full no-drag">
+        <div className="w-80 border-l border-white/5 bg-stone-900/80 flex-shrink-0 relative h-full drag">
           {currentItem ? (
-            <div className="grid grid-rows-[1fr_auto] h-full p-3 gap-3 overflow-hidden">
+            <div className="grid grid-rows-[1fr_auto] h-full p-3 gap-3 overflow-hidden no-drag">
 
               {/* 核心滚动区域 */}
               <div
